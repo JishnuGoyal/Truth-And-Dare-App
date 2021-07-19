@@ -1,7 +1,11 @@
 package com.example.truthanddaresample
 
+import android.animation.Animator
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.annotation.RequiresApi
 import com.example.truthanddaresample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -9,31 +13,69 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         initialiseBinding()
 
-        binding.btnTruthOrDare.setOnClickListener {
-            truthOrDare()
+        binding.truthOrDareTextView.setOnClickListener {
+            startAnimation()
         }
     }
 
     private fun truthOrDare() {
-        val array = arrayListOf<Int>(1,2)
+
+//        binding.btnTruthOrDare.removeAllAnimatorListeners()
+//        binding.btnTruthOrDare.resumeAnimation()
+
+        val array = arrayListOf<Int>(1, 2)
         val result = array.random()
 
-        if (result == 1){
+        if (result == 1) {
             binding.truthOrDareTextView.text = "Truth"
-        }else if (result == 2){
+        } else if (result == 2) {
             binding.truthOrDareTextView.text = "Dare"
         }
+
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    private fun startAnimation() {
+
+
+            binding.btnTruthOrDare.setMaxProgress(0.2f)
+
+            binding.btnTruthOrDare.playAnimation()
+
+
+            binding.btnTruthOrDare.addAnimatorListener(object: Animator.AnimatorListener{
+                override fun onAnimationStart(animation: Animator?) {
+
+                    binding.truthOrDareTextView.text = "..."
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+
+                    truthOrDare()
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                }
+
+                override fun onAnimationRepeat(animation: Animator?) {
+
+                }
+
+            })
+
+
 
     }
 
 
-    private fun initialiseBinding(){
+    private fun initialiseBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
