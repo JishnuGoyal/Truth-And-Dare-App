@@ -12,8 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,9 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun truthOrDare() {
 
-//        binding.btnTruthOrDare.removeAllAnimatorListeners()
-//        binding.btnTruthOrDare.resumeAnimation()
-
         val array = arrayListOf<Int>(1, 2)
         val result = array.random()
 
@@ -38,38 +33,29 @@ class MainActivity : AppCompatActivity() {
             binding.truthOrDareTextView.text = "Dare"
         }
 
-
     }
 
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
     private fun startAnimation() {
+        binding.btnTruthOrDare.setMaxProgress(0.2f)
+        binding.btnTruthOrDare.playAnimation()
 
+        binding.btnTruthOrDare.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
+                binding.truthOrDareTextView.text = "..."
+            }
 
-            binding.btnTruthOrDare.setMaxProgress(0.2f)
+            override fun onAnimationEnd(animation: Animator?) {
+                truthOrDare()
+            }
 
-            binding.btnTruthOrDare.playAnimation()
+            override fun onAnimationCancel(animation: Animator?) {
+            }
 
+            override fun onAnimationRepeat(animation: Animator?) {
 
-            binding.btnTruthOrDare.addAnimatorListener(object: Animator.AnimatorListener{
-                override fun onAnimationStart(animation: Animator?) {
+            }
 
-                    binding.truthOrDareTextView.text = "..."
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
-
-                    truthOrDare()
-                }
-
-                override fun onAnimationCancel(animation: Animator?) {
-                }
-
-                override fun onAnimationRepeat(animation: Animator?) {
-
-                }
-
-            })
-
+        })
 
 
     }
