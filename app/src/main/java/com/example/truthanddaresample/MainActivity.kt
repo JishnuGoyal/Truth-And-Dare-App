@@ -14,7 +14,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initialiseBinding()
+
+        binding.btnTruthOrDare.setOnClickListener {
+            truthOrDare()
+        }
     }
+
+    private fun truthOrDare() {
+        val array = arrayListOf<Int>(1,2)
+        val result = array.random()
+
+        if (result == 1){
+            binding.truthOrDareTextView.text = "Truth"
+        }else if (result == 2){
+            binding.truthOrDareTextView.text = "Dare"
+        }
+
+    }
+
 
     private fun initialiseBinding(){
         binding = ActivityMainBinding.inflate(layoutInflater)
