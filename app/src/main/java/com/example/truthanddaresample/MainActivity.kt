@@ -2,34 +2,32 @@ package com.example.truthanddaresample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.truthanddaresample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
+    val numbers = listOf<Int>(1,2)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         initialiseBinding()
 
         binding.btnTruthOrDare.setOnClickListener {
             truthOrDare()
+
         }
     }
 
     private fun truthOrDare() {
-        val array = arrayListOf<Int>(1,2)
-        val result = array.random()
-
+        val result = numbers.random()
         if (result == 1){
             binding.truthOrDareTextView.text = "Truth"
         }else if (result == 2){
             binding.truthOrDareTextView.text = "Dare"
         }
-
     }
 
 
