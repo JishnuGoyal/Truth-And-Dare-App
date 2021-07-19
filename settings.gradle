@@ -1,0 +1,2 @@
+rootProject.name = "TruthAndDareSample"
+include ':app'
