@@ -6,4 +6,5 @@ the complexity of the IDE, here is a starter project that may ease things a litt
 
 Feel free to clone this repo, play around and make changes (this is the best way to learn!)
 
-You can also reach out to me on instagram @jishnugoyal
+You can also reach out to me on instagram <a href = "https://www.instagram.com/jishnugoyal/">@jishnugoyal</a>
+ 
