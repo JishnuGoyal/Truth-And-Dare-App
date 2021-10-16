@@ -10,5 +10,6 @@ _Instructions_
 For the **final code** of the app, click on Part2 branch. (or find it here: https://github.com/JishnuGoyal/Truth-And-Dare-App/tree/Part2-Beautification)
 
 # Contribution
-For contributing, read this <a href = "
+For contributing, read this <a href = "https://github.com/JishnuGoyal/Truth-And-Dare-App/wiki/Contributing#all-the-final-code-will-soon-be-merged-into-the-develop-branch">wiki</a>
+
                              
